@@ -1,0 +1,175 @@
+﻿<Window x:Class="poo2_poject_mvc.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Cadastro de Produtos" 
+        Height="697" Width="400" 
+        MinHeight="500" MinWidth="700"
+        WindowStartupLocation="CenterScreen" Foreground="White">
+
+    <Window.Resources>
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="8 15"/>
+            <Setter Property="Margin" Value="0 0 10 0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SecondaryButton" TargetType="Button">
+            <Setter Property="Background" Value="#2196F3"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="8 15"/>
+            <Setter Property="Margin" Value="0 0 10 0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="DangerButton" TargetType="Button">
+            <Setter Property="Background" Value="#F44336"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="8 15"/>
+            <Setter Property="Margin" Value="0 0 10 0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="0,2,0,2"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="0,2,0,2"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,5,5,5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="AlternatingRowBackground" Value="#F5F5F5"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#E0E0E0"/>
+            <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#E0E0E0"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF9BFFEA"/>
+            <GradientStop Color="#FF040A17" Offset="1"/>
+            <GradientStop Color="#FF9BFFD3"/>
+            <GradientStop Color="#FF0B1B42" Offset="0.546"/>
+            <GradientStop Color="#FF23C7D6"/>
+            <GradientStop Color="#FF31696D"/>
+            <GradientStop Color="#FF040A17"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="258.96"/>
+            <RowDefinition Height="Auto" MinHeight="42.96"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Header="" Margin="0,0,0,58" Padding="10" BorderBrush="#FF3A4A6D">
+            <Grid Height="158">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="ID Selecionado:" FontSize="14"/>
+                <TextBox x:Name="TxtId" Grid.Row="0" IsReadOnly="True" Text="0" 
+                         Width="50" HorizontalAlignment="Left" Margin="10,0,0,5" Cursor="Hand" Background="#FF1E2A44" BorderBrush="#FF3A4A6D" Foreground="White" Grid.Column="1"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Nome:" FontSize="14"/>
+                <TextBox x:Name="TxtNome" Grid.Row="1" Margin="10,10,10,9" Cursor="Hand" Background="#FF1E2A44" BorderBrush="#FF3A4A6D" Foreground="White" Grid.Column="1"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="Preço (R$):" Margin="10,2,5,2" FontSize="14"/>
+                <TextBox x:Name="TxtPreco" Grid.Row="1" Grid.Column="3" Margin="0,10,0,9" Cursor="Hand" Background="#FF1E2A44" BorderBrush="#FF3A4A6D" Foreground="White"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Categoria:" FontSize="14"/>
+                <ComboBox x:Name="CmbCategoria" Grid.Row="2" Grid.ColumnSpan="3" Margin="10,2,0,2"
+                          DisplayMemberPath="Nome" SelectedValuePath="Id" SelectedIndex="0" Cursor="Hand" Background="#FF1E2A44" BorderBrush="#FF3A4A6D" Grid.Column="1"/>
+
+                <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="35,18,0,-16" Width="407">
+                    <Button x:Name="BtnSalvar" Content="Salvar (Novo/Atualizar)" Click="BtnSalvar_Click" Style="{StaticResource PrimaryButton}" Cursor="Hand" Width="140"/>
+                    <Button x:Name="BtnLimpar" Content="Limpar Formulário" Click="BtnLimpar_Click" Style="{StaticResource SecondaryButton}" Cursor="Hand" Width="115"/>
+                    <Button x:Name="BtnDeletar" Content="Deletar Selecionado" Click="BtnDeletar_Click" IsEnabled="False" Style="{StaticResource DangerButton}" Cursor="Hand" Width="124" Height="20" Background="#FFE41010"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,7,0,8">
+            <TextBlock Text="Buscar por Nome:" Margin="0,0,5,0" FontSize="14"/>
+            <TextBox x:Name="TxtFiltro" Width="201" KeyDown="TxtFiltro_KeyDown" Margin="0" Cursor="Hand" Background="#FF1E2A44" BorderBrush="#FF3A4A6D" Foreground="White"/>
+            <Button Content="Buscar" Click="BtnBuscar_Click" Margin="10,0,0,0" Padding="5 10" Style="{StaticResource SecondaryButton}" Cursor="Hand" Width="78" Height="22"/>
+            <Button x:Name="BtnGerarPdf" Content="Gerar Relatório PDF" Click="BtnGerarPdf_Click" Margin="20,0,0,0" Padding="5 10" Style="{StaticResource PrimaryButton}" Width="123" Cursor="Hand" Height="22" Background="#FFE04C13"/>
+        </StackPanel>
+
+        <DataGrid x:Name="DataGridProdutos" Grid.Row="2" AutoGenerateColumns="False" IsReadOnly="True" 
+                  SelectionChanged="DataGridProdutos_SelectionChanged" CanUserAddRows="False" BorderBrush="#FF3A4A6D" Margin="0,46,0,0" FontSize="14">
+            <DataGrid.Background>
+                <SolidColorBrush Color="White" Opacity="0.5"/>
+            </DataGrid.Background>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Nome do Produto" Binding="{Binding Nome}" Width="*"/>
+                <DataGridTextColumn Header="Preço" Binding="{Binding Preco, StringFormat=C2}" Width="100"/>
+                <DataGridTextColumn Header="Categoria" Binding="{Binding Categoria.Nome}" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
