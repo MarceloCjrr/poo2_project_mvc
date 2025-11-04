@@ -42,8 +42,8 @@ public void Salvar(Categoria categoria)
     _categoriaDAO.Salvar(categoria); 
 }
 
-💾 2. Persistência e Scripts SQL Corretos
-O sistema utiliza MySQL para persistência. O script de criação de tabelas garante a integridade dos dados e estabelece as relações necessárias.
+##💾 2. Persistência e Scripts SQL Corretos
+O sistema utiliza MySQL para **persistência**. O script de criação de tabelas garante a integridade dos dados e estabelece as relações necessárias.
 
 Scripts SQL (Tabelas e Relacionamentos)
 SQL
@@ -68,34 +68,35 @@ CREATE TABLE Usuario (
     PasswordHash VARCHAR(255) NOT NULL
     -- Tabela utilizada para o recurso de Login e Segurança.
 );
-🤝 3. Service Layer e Uso de Interface para Backends
+
+##🤝 3. Service Layer e Uso de Interface para Backends
 O Service Layer é construído sobre Interfaces, cumprindo o requisito de facilidade para troca de backend.
 
-Contrato: Interfaces como IProdutoService definem o contrato de serviço.
+**Contrato:** Interfaces como IProdutoService definem o contrato de serviço.
 
-Abstração: O Controller depende apenas deste contrato (IProdutoService).
+**Abstração:** O Controller depende apenas deste contrato (IProdutoService).
 
-Benefício: Isso permite criar implementações alternativas (ex: ProdutoServiceInMemory ou ProdutoServicePostgreSQL) sem modificar as camadas Controller ou View.
+**Benefício:** Isso permite criar implementações alternativas (ex: ProdutoServiceInMemory ou ProdutoServicePostgreSQL) sem modificar as camadas Controller ou View.
 
-🎨 4. Funcionamento da Interface (Operações Básicas e Busca)
+##🎨 4. Funcionamento da Interface (Operações Básicas e Busca)
 A interface (MainWindow.xaml - SistemadeCadastroProduto.PNG) demonstra a operação integrada.
 
 Atualização Dinâmica: Após qualquer operação de escrita (Salvar ou Deletar), a DataGrid é recarregada imediatamente com os dados mais recentes do MySQL.
 
-Busca por Filtro: O campo de busca utiliza a lógica do SQL LIKE implementada no DAO, permitindo a filtragem de produtos por nome em tempo real.
+**Busca por Filtro:** O campo de busca utiliza a lógica do SQL LIKE implementada no DAO, permitindo a filtragem de produtos por nome em tempo real.
 
-🔒 5. Implementação e Documentação do Recurso Novo: Login
+##🔒 5. Implementação e Documentação do Recurso Novo: Login
 O recurso novo implementado é o Sistema de Login e Controle de Acesso.
 
-Segurança: O sistema inicia na LoginWindow (SistemadeCadastroLogin.PNG) e exige autenticação contra a tabela Usuario.
+**Segurança:** O sistema inicia na LoginWindow (SistemadeCadastroLogin.PNG) e exige autenticação contra a tabela Usuario.
 
-Gerenciamento de Usuários: A tela de Cadastro de Novo Usuário (SistemaCadastroNovoUsuario.PNG) permite a expansão da base de usuários, utilizando o fluxo completo Service/DAO.
+**Gerenciamento de Usuários:** A tela de Cadastro de Novo Usuário (SistemaCadastroNovoUsuario.PNG) permite a expansão da base de usuários, utilizando o fluxo completo Service/DAO.
 
-✅ 6. Qualidade do Código (Boas Práticas e Padrão)
+##✅ 6. Qualidade do Código (Boas Práticas e Padrão)
 O código adere às boas práticas de engenharia de software:
 
-Injeção de Dependência (DI): Classes (Controller, Service) recebem suas dependências via construtor, eliminando a criação manual de objetos (new).
+**Injeção de Dependência (DI):** Classes (Controller, Service) recebem suas dependências via construtor, eliminando a criação manual de objetos (new).
 
-Segurança (SQL Parametrizado): Todas as consultas de escrita e busca que recebem dados do usuário (Salvar, Deletar, BuscarPorId) utilizam cmd.Parameters.AddWithValue(). Isto é essencial para prevenir ataques de SQL Injection.
+**Segurança (SQL Parametrizado):** Todas as consultas de escrita e busca que recebem dados do usuário (Salvar, Deletar, BuscarPorId) utilizam cmd.Parameters.AddWithValue(). Isto é essencial para prevenir ataques de SQL Injection.
 
-Gerenciamento de Recursos: O bloco using é utilizado em todas as operações de banco de dados (MySqlConnection, MySqlCommand), garantindo o fechamento e liberação (dispose) automático dos recursos.
+**Gerenciamento de Recursos:** O bloco using é utilizado em todas as operações de banco de dados (MySqlConnection, MySqlCommand), garantindo o fechamento e liberação (dispose) automático dos recursos.
