@@ -10,7 +10,7 @@ namespace poo2_poject_mvc.DAO
     {
         // AJUSTE A STRING DE CONEXÃO CONFORME SEU AMBIENTE!
         private const string ConnectionString =
-            "Server=127.0.0.1;Port=3305;Database=poo2_projeto_mvc;User Id=root;Password=Junin2535.;";
+            "Server=127.0.0.1;Port=3306;Database=poo2_projeto_mvc;User Id=root;Password=SUA_SENHA_AQUI;";
 
         public static string GetConnectionString()
         {
